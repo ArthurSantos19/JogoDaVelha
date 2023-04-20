@@ -3,15 +3,15 @@ import { GameContainer, Squares } from "./styles";
 
 export function Game() {
     const [squares, setSquares] = useState([null,null,null,null,null,null,null,null,null]);
-    const [playerX, setPlayerX] = useState('X');
+    const [playerX, setPlayerX] = useState(true);
 
 
     const handleClick = (index) => {
 
         const newSquares = [...squares];
-        newSquares[index] = playerX
+        newSquares[index] = playerX ? 'X' : 'O';
         setSquares(newSquares);
-         
+        setPlayerX(!playerX) // ALTERNA PLAYER
     }
     return(
         
