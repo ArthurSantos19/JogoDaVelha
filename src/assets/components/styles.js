@@ -23,3 +23,20 @@ export const Squares = styled.button`
     padding: 0;
     text-align: center;
 `
+
+export const WinnerContainer = styled.div`
+    position: absolute;
+    background: white;
+    border: solid #3CB371 2px;
+    color: #3CB371;
+    font-size: 2rem;
+    width: 46rem;
+    height: 10rem;
+    top: 20rem;
+    left: 30%;
+    border-radius: 12px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+`

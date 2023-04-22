@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { GameContainer, Squares } from "./styles";
+import { GameContainer, Squares, WinnerContainer } from "./styles";
 
 export function Game() {
     const [squares, setSquares] = useState([null,null,null,null,null,null,null,null,null]);
@@ -17,10 +17,6 @@ export function Game() {
         }   
     }
 
-    const restartGame = () => {
-        setSquares([null,null,null,null,null,null,null,null,null]);
-        setWinner(false);
-    }
 
     const checkWinner = () => {
         const lines = [
@@ -36,7 +32,6 @@ export function Game() {
 
        for (let i = 0; i < lines.length; i++) {
             const [a, b, c] = lines[i];
-            console.log([a, b, c])
            if(squares[a] && squares[a] === squares[b] && squares[a] === squares[c]) {
                 alert("VITORIA")
                 setWinner(true);
@@ -44,14 +39,25 @@ export function Game() {
            }
        }
     }
-    return(
+
+    // const restartGame = () => {
+    //     if(winner == true || squares != null) {
+    //         setSquares([null,null,null,null,null,null,null,null,null]);
+    //         setWinner(false);
+    //     }
         
-        <GameContainer>
-            {squares.map((square, index) =>{
-                return <Squares key={index} onClick={() => handleClick(index)}>{square}</Squares>
-            })}
-            
-            
-        </GameContainer>
+    // }
+    return(
+        <>
+            <div style={{opacity: winner ? 0.35 : 1}}>
+                <GameContainer>
+                    {squares.map((square, index) =>{
+                        return <Squares key={index} onClick={() => handleClick(index)}>{square}</Squares> 
+                        
+                    })}
+                </GameContainer>
+            </div>
+            {winner == true ? <WinnerContainer>Parabéns o jogador ... venceu </WinnerContainer>:null}
+        </>
     )
 }
