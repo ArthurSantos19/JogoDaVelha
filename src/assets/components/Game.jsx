@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { GameContainer, Squares, WinnerContainer } from "./styles";
+import { GameContainer, Squares, WinnerContainer, ButtonContainer } from "./styles";
 
 export function Game() {
     const [squares, setSquares] = useState([null,null,null,null,null,null,null,null,null]);
@@ -11,7 +11,6 @@ export function Game() {
     }, [squares]);
 
     const handleClick = (index) => {
-        
         const newSquares = [...squares];
         newSquares[index] = playerX ? 'X' : 'O';
         setSquares(newSquares);
@@ -39,13 +38,14 @@ export function Game() {
        }
     }
 
-    // const restartGame = () => {
-    //     if(winner == true || squares != null) {
-    //         setSquares([null,null,null,null,null,null,null,null,null]);
-    //         setWinner(false);
-    //     }
+    const restartGame = () => {
+        if(winner == true || squares != null) {
+            setSquares([null,null,null,null,null,null,null,null,null]);
+            setWinner(false);
+        }
         
-    // }
+    }
+
     return(
         <>
             <div style={{opacity: winner ? 0.35 : 1}}>
@@ -56,7 +56,9 @@ export function Game() {
                     })}
                 </GameContainer>
             </div>
-            {winner == true ? <WinnerContainer>Parabéns o jogador {playerX ? "O" : "X"} venceu </WinnerContainer>:null}
+            {winner == true ? <WinnerContainer>Parabéns o jogador {playerX ? "O" : "X"} venceu! 
+                <ButtonContainer onClick={restartGame}> Reiniciar jogo</ButtonContainer>
+             </WinnerContainer>:null}
         </>
     )
 }

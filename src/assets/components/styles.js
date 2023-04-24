@@ -39,4 +39,20 @@ export const WinnerContainer = styled.div`
     justify-content: center;
     align-items: center;
     text-align: center;
+    gap: 1rem;
+`
+
+export const ButtonContainer = styled.button`
+    width: 12rem;
+    height: 4rem;
+    font-size: medium;
+    color: green;
+    background-color: white;
+    border: solid 1px #3CB371;
+
+    &:hover {
+    background-color: #3CB371;
+    color: white;
+    border: solid 1px white;
+  }
 `
