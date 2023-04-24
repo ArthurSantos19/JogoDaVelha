@@ -34,7 +34,7 @@ export function Game() {
        for (let i = 0; i < lines.length; i++) {
             const [a, b, c] = lines[i];
            if(squares[a] && squares[a] === squares[b] && squares[a] === squares[c]) {
-                setWinner(true);
+                setWinner(true);         
            }
        }
     }
@@ -56,7 +56,7 @@ export function Game() {
                     })}
                 </GameContainer>
             </div>
-            {winner == true ? <WinnerContainer>Parabéns o jogador ... venceu </WinnerContainer>:null}
+            {winner == true ? <WinnerContainer>Parabéns o jogador {playerX ? "O" : "X"} venceu </WinnerContainer>:null}
         </>
     )
 }
