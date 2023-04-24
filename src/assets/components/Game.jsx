@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { GameContainer, Squares, WinnerContainer } from "./styles";
 
 export function Game() {
@@ -6,15 +6,16 @@ export function Game() {
     const [playerX, setPlayerX] = useState(true);
     const [winner, setWinner] = useState(false)
 
-    const handleClick = (index) => {
+    useEffect(() => {
+        checkWinner();
+    }, [squares]);
 
+    const handleClick = (index) => {
+        
         const newSquares = [...squares];
         newSquares[index] = playerX ? 'X' : 'O';
         setSquares(newSquares);
         setPlayerX(!playerX) // Alterna Player
-        if(winner == false) {
-            checkWinner();
-        }   
     }
 
 
@@ -33,9 +34,7 @@ export function Game() {
        for (let i = 0; i < lines.length; i++) {
             const [a, b, c] = lines[i];
            if(squares[a] && squares[a] === squares[b] && squares[a] === squares[c]) {
-                alert("VITORIA")
                 setWinner(true);
-                restartGame();
            }
        }
     }
