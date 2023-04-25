@@ -39,7 +39,7 @@ export function Game() {
     }
 
     const restartGame = () => {
-        if(winner == true || squares != null) {
+        if(squares != null) {
             setSquares([null,null,null,null,null,null,null,null,null]);
             setWinner(false);
         }
@@ -47,7 +47,7 @@ export function Game() {
     }
 
     return(
-        <>
+        <div>
             <div style={{opacity: winner ? 0.35 : 1}}>
                 <GameContainer>
                     {squares.map((square, index) =>{
@@ -58,7 +58,10 @@ export function Game() {
             </div>
             {winner == true ? <WinnerContainer>Parabéns o jogador {playerX ? "O" : "X"} venceu! 
                 <ButtonContainer onClick={restartGame}> Reiniciar jogo</ButtonContainer>
-             </WinnerContainer>:null}
-        </>
+             </WinnerContainer>: null}
+             {winner == false && !squares.includes(null) ? <WinnerContainer>Ocorreu um empate
+                <ButtonContainer onClick={restartGame}> Reiniciar jogo</ButtonContainer>
+             </WinnerContainer>: null}
+        </div>
     )
 }

@@ -29,17 +29,34 @@ export const WinnerContainer = styled.div`
     background: white;
     border: solid #3CB371 2px;
     color: #3CB371;
-    font-size: 2rem;
-    width: 46rem;
+    font-size: 1.8rem;
+    width: 40rem;
     height: 10rem;
-    top: 20rem;
-    left: 30%;
+    top: 12rem;
+    left: 34%;
     border-radius: 12px;
     display: flex;
     justify-content: center;
     align-items: center;
     text-align: center;
     gap: 1rem;
+    box-shadow: 5px 8px 4px 4px gray;
+
+    opacity: 0;
+    transition: opacity 1s ease-in-out; /* adicionando a transição */
+    animation-name: fadeIn;
+    animation-duration: 1s;
+    animation-fill-mode: forwards;
+    animation-delay: 0.5s; /* adicionando o delay */
+
+    @keyframes fadeIn {
+        from {
+            opacity: 0;
+        }
+        to {
+            opacity: 1;
+        }
+    }
 `
 
 export const ButtonContainer = styled.button`
@@ -48,7 +65,6 @@ export const ButtonContainer = styled.button`
     font-size: medium;
     color: green;
     background-color: white;
-    border: solid 1px #3CB371;
 
     &:hover {
     background-color: #3CB371;
