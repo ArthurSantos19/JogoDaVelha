@@ -11,10 +11,12 @@ export function Game() {
     }, [squares]);
 
     const handleClick = (index) => {
-        const newSquares = [...squares];
-        newSquares[index] = playerX ? 'X' : 'O';
-        setSquares(newSquares);
-        setPlayerX(!playerX) // Alterna Player
+        if(squares[index] === null) {
+            const newSquares = [...squares];
+            newSquares[index] = playerX ? 'X' : 'O';
+            setSquares(newSquares);
+            setPlayerX(!playerX) // Alterna Player
+        }
     }
 
 
